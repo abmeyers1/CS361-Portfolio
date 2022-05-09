@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox as mb
 from convert2 import unit_convert
+import requests
 
 root = tk.Tk()
 root.geometry('400x200')
@@ -24,6 +25,20 @@ def convert():
         result_field.config(text='')
         mb.showerror(title= 'Error', message='Please enter a valid number to convert')
     
+def rand():
+
+    num = requests.get("http://localhost:5000/?lower=False&upper=False&sym=False&length=3" )
+    strng = num.text
+    print(strng)
+    # Split string to just get random number
+    split = strng.split(":")
+    result = int(split[1][1:-5])
+    print(result)
+
+
+    result_field.config(text='')
+    txt.delete(1.0, tk.END)
+    txt.insert(1.0, str(result))
 
 def reset():
     txt.delete(1.0, tk.END)
@@ -72,18 +87,22 @@ drop2.grid(row=1, column=3)
 convert_button = tk.Button(root, text='Convert', command = convert)
 convert_button.grid(row=2, column=0)
 
+
+# Random button
+random_button = tk.Button(root, text = "Generate a random number", command= rand)
+random_button.grid(row=3, column=0)
 # Result label
 
 result_label = tk.Label(root, text='Result:\t')
-result_label.grid(row=3, column=0)
+result_label.grid(row=4, column=0)
 
 # Result field
 result_field = tk.Label(root, text='')
-result_field.grid(row=4, column=0)
+result_field.grid(row=5, column=0)
 
 # Clear button
 clear_button = tk.Button(root, text='Clear', command= reset)
-clear_button.grid(row=4, column=1)
+clear_button.grid(row=6, column=1)
 
 
 
