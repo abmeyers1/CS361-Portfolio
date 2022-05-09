@@ -1,5 +1,5 @@
 # Functions for converting units
-# TESTING 
+
 
 def unit_convert(value, unit1, unit2):
 
@@ -19,12 +19,12 @@ def unit_convert(value, unit1, unit2):
 
     # Same unit, no calculation needed
     if unit1 == unit2:
-        print('EQUAL')
+        # print('EQUAL')
         return value
 
     # Both empirical
     if unit1 in emp and unit2 in emp:
-        print('BOTH EMP')
+        # print('BOTH EMP')
         if unit1 != 'inches':
             value /= emp[unit1]        # convert down to inches
         value *= emp[unit2]
@@ -32,23 +32,23 @@ def unit_convert(value, unit1, unit2):
     
     # Both metric
     if unit1 in metric and unit2 in metric:
-        print("BOTH METRIC")
+        # print("BOTH METRIC")
         if unit1 != 'millimeters':
             value /= metric[unit1]         # convert down to inches
         value *= metric[unit2]
         return value
     
     else:                               # units in different standards
-        print("CHANGE STYLES")
+        # print("CHANGE STYLES")
         if unit1 in metric:             # convert the value from metric to emperical
-            print('UNIT1 is Metric!')
+            # print('UNIT1 is Metric!')
             if unit1 != 'millimeters':
                 value /= metric[unit1]     # convert down to millimeters
             value *= 25.4               # convert inches to millimeter
             value *= emp[unit2]      # convert up from millimeter to unit2
 
         else:                           # convert the value to emperical
-            print('GGGGGG GUNIT1 is emperical')
+            # print('GGGGGG GUNIT1 is emperical')
             if unit1 != 'inches':
                 value /= emp[unit1]
               
@@ -57,7 +57,7 @@ def unit_convert(value, unit1, unit2):
         return value
 
     
-val = 1
-unit1= 'inches'
-unit2= 'centimeters'
-print( unit_convert(val, unit1, unit2))
+# val = 1
+# unit1= 'inches'
+# unit2= 'centimeters'
+# print( unit_convert(val, unit1, unit2))
