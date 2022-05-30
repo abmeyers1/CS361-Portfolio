@@ -1,7 +1,7 @@
 
 import tkinter as tk
 from tkinter import messagebox as mb
-from convert2 import unit_convert
+from convert import unit_convert
 import requests
 
 root = tk.Tk()
@@ -23,7 +23,7 @@ def convert():
         txt.delete(1.0,tk.END)
         result_field.config(text='')
         mb.showerror(title= 'Error', message='Please enter a valid number to convert')
-    
+
 def rand():
 
     num = requests.get("http://localhost:5000/?lower=False&upper=False&sym=False&length=3" )
@@ -88,7 +88,7 @@ convert_button.grid(row=2, column=0)
 
 
 # Random button
-random_button = tk.Button(root, text = "Generate a random number", command= rand)
+random_button = tk.Button(root, text = "Generate a random number (short delay)", command= rand)
 random_button.grid(row=3, column=0)
 # Result label
 
