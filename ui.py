@@ -17,9 +17,8 @@ def convert():
         value = float(entry)
 
         result = unit_convert(value, unit2.get().strip(), unit1.get().strip())
-
-        # result_field.config(text=result)
-        result_field.config(text=f'{result} {unit2.get()}')
+        result_round = round(result, 3)
+        result_field.config(text=f'{result_round} {unit2.get()}')
     except ValueError:
         txt.delete(1.0,tk.END)
         result_field.config(text='')
@@ -29,11 +28,11 @@ def rand():
 
     num = requests.get("http://localhost:5000/?lower=False&upper=False&sym=False&length=3" )
     strng = num.text
-    print(strng)
+    
     # Split string to just get random number
     split = strng.split(":")
     result = int(split[1][1:-5])
-    print(result)
+    
 
 
     result_field.config(text='')
